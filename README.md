@@ -1,4 +1,4 @@
-# heroku-buildpack-google-chrome
+# scalingo-buildpack-google-chrome
 
 This buildpack downloads and installs (headless) Google Chrome from your choice
 of release channels.
@@ -6,17 +6,16 @@ of release channels.
 ## Channels
 
 You can choose your release channel by specifying `GOOGLE_CHROME_CHANNEL` as
-a config var for your app, in your app.json (for Heroku CI and Review Apps),
-or in your pipeline settings (for Heroku CI).
+a config var for your app.
 
 Valid values are `stable`, `beta`, and `unstable`. If unspecified, the `stable`
 channel will be used.
 
 ## Shims and Command Line Flags
 
-This buildpack installs shims that always add `--headless`, `--disable-gpu`, 
-`--no-sandbox`, and `--remote-debugging-port=9222` to any `google-chrome` 
-command as you'll have trouble running Chrome on a Heroku dyno otherwise.
+This buildpack installs shims that always add `--headless`, `--disable-gpu`,
+`--no-sandbox`, and `--remote-debugging-port=9222` to any `google-chrome`
+command as you'll have trouble running Chrome on a Scalingo dyno otherwise.
 
 You'll have two of these shims on your path: `google-chrome` and
 `google-chrome-$GOOGLE_CHROME_CHANNEL`. They both point to the binary of
@@ -30,12 +29,12 @@ This buildpack does not install chromedriver, but there is a
 also available.
 
 Additionally, chromedriver expects Chrome to be installed at `/usr/bin/google-chrome`,
-but that's a read-only filesystem in a Heroku slug. You'll need to tell Selenium/chromedriver
+but that's a read-only filesystem in a Scalingo slug. You'll need to tell Selenium/chromedriver
 that the chrome binary is at `/app/.apt/usr/bin/google-chrome` instead.
 
 To make that easier, this buildpack makes `$GOOGLE_CHROME_BIN`, and
-`$GOOGLE_CHROME_SHIM` available as environment variables. With them, you can 
-use the standard location locally and the custom location on Heroku. An example 
+`$GOOGLE_CHROME_SHIM` available as environment variables. With them, you can
+use the standard location locally and the custom location on Heroku. An example
 configuration for Ruby's Capybara:
 
 ```
@@ -53,9 +52,3 @@ end
 
 Capybara.javascript_driver = :chrome
 ```
-
-## Releasing a new version
-
-Make sure you publish this buildpack in the buildpack registry
-
-`heroku buildpacks:publish heroku/google-chrome master`
