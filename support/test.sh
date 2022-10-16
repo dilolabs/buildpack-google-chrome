@@ -5,7 +5,7 @@ set -euo pipefail
 [ $# -eq 1 ] || { echo "Usage: $0 STACK"; exit 1; }
 
 STACK="${1}"
-BASE_IMAGE="scalingo/${STACK/-/:}"
+BASE_IMAGE="scalingo/${STACK}:latest"
 OUTPUT_IMAGE="google-chrome-test-${STACK}"
 
 echo "Building buildpack on stack ${STACK}..."
