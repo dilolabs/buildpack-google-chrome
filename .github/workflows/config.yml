@@ -6,12 +6,12 @@ jobs:
   test:
     strategy:
       matrix:
-        stack: [scalingo-20, scalingo-22]
+        stack: [scalingo-22, scalingo-24]
         channel: [stable, beta, unstable]
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Run Test
       run: ./support/test.sh ${{ matrix.stack }}
