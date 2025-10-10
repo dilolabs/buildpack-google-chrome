@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ### 2025-10-10
 - Added support for Scalingo-24.
+- Dropped support for Scalingo-18 and Scalingo-20.
 
 ## Scalingo buildpack
 
