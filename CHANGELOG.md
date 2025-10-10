@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+### 2025-10-10
+- Added support for Scalingo-24.
+
 ## Scalingo buildpack
 
 ### 2024-09-29
