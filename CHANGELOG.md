@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 ### 2025-10-10
 - Added support for Scalingo-24.
 - Dropped support for Scalingo-18 and Scalingo-20.
+- Scalingo-24 packages:
+  - Removed `gconf-service`, `libappindicator1` & `libgconf-2-4`
+  - Replaced `libasound2` with `libasound2t64`
 
 ## Scalingo buildpack
 
